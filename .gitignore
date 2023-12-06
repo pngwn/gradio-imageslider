@@ -8,3 +8,4 @@ __tmp/*
 *.pyi
 node_modules
 docs.py
+templates
