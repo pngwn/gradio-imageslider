@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@gradio/atoms':
     specifier: 0.3.0
@@ -26,6 +22,12 @@ dependencies:
   cropperjs:
     specifier: ^1.5.12
     version: 1.5.12
+  d3-drag:
+    specifier: ^3.0.0
+    version: 3.0.0
+  d3-selection:
+    specifier: ^3.0.0
+    version: 3.0.0
   lazy-brush:
     specifier: ^1.0.1
     version: 1.0.1
@@ -435,6 +437,24 @@ packages:
       source-map-js: 1.0.2
     dev: false
 
+  /d3-dispatch@3.0.1:
+    resolution: {integrity: sha512-rzUyPU/S7rwUflMyLc1ETDeBj0NRuHKKAcvukozwhshr6g6c5d8zh4c2gQjY2bZ0dXeGLWc1PF174P2tVvKhfg==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /d3-drag@3.0.0:
+    resolution: {integrity: sha512-pWbUJLdETVA8lQNJecMxoXfH6x+mO2UQo8rSmZ+QqxcbyA3hfeprFgIT//HW2nlHChWeIIMwS2Fq+gEARkhTkg==}
+    engines: {node: '>=12'}
+    dependencies:
+      d3-dispatch: 3.0.1
+      d3-selection: 3.0.0
+    dev: false
+
+  /d3-selection@3.0.0:
+    resolution: {integrity: sha512-fmTRWbNMmsmWq6xJV8D19U/gw/bwrHfNXxrIN+HfZgnzqTHp9jOmKMhsTUjXOJnZOdZY9Q28y4yebKzqDKlxlQ==}
+    engines: {node: '>=12'}
+    dev: false
+
   /d@1.0.1:
     resolution: {integrity: sha512-m62ShEObQ39CfralilEQRjH6oAMtNCV1xJyEx5LpRYUVN+EviphDgUc/F3hnYbADmkiNs67Y+3ylmlG7Lnu+FA==}
     dependencies:
@@ -723,3 +743,7 @@ packages:
     dependencies:
       bufferutil: 4.0.7
     dev: false
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
