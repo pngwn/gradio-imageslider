@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - "pyproject.toml"
+    # paths-ignore:
+    #   - "pyproject.toml"
 
 jobs:
   publish:
@@ -29,6 +29,6 @@ jobs:
         run: python -m pip install gradio
       - name: Build pr package
         run: |
-          gradio cc install
-          gradio cc build --npm_install="pnpm i"
+          gradio cc install --npm_install="pnpm i"
+          gradio cc build 
           gradio cc publish --pypi_username=__token__ --pypi_password=${{ secrets.PYPI_API_TOKEN }} --upload_demo=False
