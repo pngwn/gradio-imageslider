@@ -25,10 +25,10 @@ jobs:
           node-version: 18
           cache: pnpm
           cache-dependency-path: frontend/pnpm-lock.yaml
-      - name: Install gradio
+      - name: Install gradio build
         run: python -m pip install gradio
       - name: Build pr package
         run: |
           gradio cc install --npm-install="pnpm i"
           gradio cc build 
-          gradio cc publish --pypi-username=__token__ --pypi-password=${{ secrets.PYPI_API_TOKEN }}
+          gradio cc publish --pypi-username=__token__ --pypi-password=${{ secrets.PYPI_API_TOKEN }} --no-upload-demo
