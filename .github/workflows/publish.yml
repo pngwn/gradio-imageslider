@@ -31,4 +31,4 @@ jobs:
         run: |
           gradio cc install --npm-install="pnpm i"
           gradio cc build 
-          gradio cc publish --pypi_username=__token__ --pypi_password=${{ secrets.PYPI_API_TOKEN }} --upload_demo=False
+          gradio cc publish --pypi-username=__token__ --pypi-password=${{ secrets.PYPI_API_TOKEN }} --upload-demo=False
