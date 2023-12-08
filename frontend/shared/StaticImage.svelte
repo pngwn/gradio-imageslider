@@ -31,6 +31,7 @@
 		select: SelectData;
 		share: ShareData;
 	}>;
+	export let position: number;
 
 	$: value, gradio.dispatch("change");
 	let dragging: boolean;
@@ -58,6 +59,7 @@
 		{...loading_status}
 	/>
 	<StaticImage
+		{position}
 		on:select={({ detail }) => gradio.dispatch("select", detail)}
 		on:share={({ detail }) => gradio.dispatch("share", detail)}
 		on:error={({ detail }) => gradio.dispatch("error", detail)}

@@ -12,10 +12,9 @@
 	export let show_label: boolean;
 	export let root: string;
 	export let i18n: I18nFormatter;
+	export let position: number;
 
 	$: value = normalise_file(value, root, null) as [FileData, FileData];
-
-	let position = 0.5;
 </script>
 
 <BlockLabel {show_label} Icon={Image} label={label || i18n("image.image")} />

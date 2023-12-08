@@ -3,7 +3,8 @@
 	import { createEventDispatcher, tick, onMount } from "svelte";
 	import { BlockLabel } from "@gradio/atoms";
 	import { Image } from "@gradio/icons";
-	import type { SelectData } from "@gradio/utils";
+	import { type SelectData } from "@gradio/utils";
+	import { clamp } from "./utils";
 
 	import { Upload } from "@gradio/upload";
 
@@ -14,6 +15,7 @@
 	export let label: string | undefined = undefined;
 	export let show_label: boolean;
 	export let root: string;
+	export let position: number;
 
 	let value_: [FileData | null, FileData | null] = [null, null];
 
@@ -51,7 +53,7 @@
 <BlockLabel {show_label} Icon={Image} label={label || "Image"} />
 
 <div data-testid="image" class="image-container">
-	<Slider position={0.5} disabled>
+	<Slider position={clamp(position, 0, 1)} disabled>
 		<div class="upload-wrap">
 			{#if !value_[0]}
 				<Upload
