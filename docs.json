@@ -1,208 +1,97 @@
 {
-  "ImageSlider": {
-    "description": "Creates an image component that can be used to upload/draw images (as an input) or display images (as an output).",
-    "members": {
-      "__init__": {
-        "description": null,
-        "value": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">value</span>: <span style=\"color: #000000\">str</span> | <span style=\"color: #000000\">PIL</span>.<span style=\"color: #000000\">Image</span>.<span style=\"color: #000000\">Image</span> | <span style=\"color: #000000\">numpy</span>.<span style=\"color: #000000\">ndarray</span> | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">value</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">str</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #EEFFFF\">PIL</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Image</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Image</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #EEFFFF\">numpy</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">ndarray</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "description": "A PIL Image, numpy array, path or URL for the default value that Image component is going to take. If callable, the function will be called whenever the app loads to set the initial value of the component."
-        },
-        "height": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">height</span>: <span style=\"color: #000000\">int</span> | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">height</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">int</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "description": "Height of the displayed image in pixels."
-        },
-        "width": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">width</span>: <span style=\"color: #000000\">int</span> | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">width</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">int</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "description": "Width of the displayed image in pixels."
-        },
-        "type": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #55aa22\">&quot;numpy&quot;</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #C3E88D\">&quot;numpy&quot;</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">type</span>: <span style=\"color: #55aa22\">&quot;numpy&quot;</span> | <span style=\"color: #55aa22\">&quot;pil&quot;</span> | <span style=\"color: #55aa22\">&quot;filepath&quot;</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #82AAFF\">type</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #C3E88D\">&quot;numpy&quot;</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #C3E88D\">&quot;pil&quot;</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #C3E88D\">&quot;filepath&quot;</span>\n</pre></div>"
-          },
-          "description": "The format the image is converted to before being passed into the prediction function. \"numpy\" converts the image to a numpy array with shape (height, width, 3) and values from 0 to 255, \"pil\" converts the image to a PIL image object, \"filepath\" passes a str path to a temporary file containing the image."
-        },
-        "label": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">label</span>: <span style=\"color: #000000\">str</span> | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">label</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">str</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "description": "component name in interface."
-        },
-        "every": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">every</span>: <span style=\"color: #000000\">float</span> | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">every</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">float</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "description": "If `value` is a callable, run the function 'every' number of seconds while the client connection is open. Has no effect otherwise. Queue must be enabled. The event can be accessed (e.g. to cancel it) via this component's .load_event attribute."
-        },
-        "show_label": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">show_label</span>: <span style=\"color: #000000\">bool</span> | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">show_label</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">bool</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "description": "if True, will display label."
-        },
-        "show_download_button": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">True</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">True</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">show_download_button</span>: <span style=\"color: #000000\">bool</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">show_download_button</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">bool</span>\n</pre></div>"
-          },
-          "description": "If True, will display button to download image."
-        },
-        "container": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">True</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">True</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">container</span>: <span style=\"color: #000000\">bool</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">container</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">bool</span>\n</pre></div>"
-          },
-          "description": "If True, will place the component in a container - providing some extra padding around the border."
-        },
-        "scale": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">scale</span>: <span style=\"color: #000000\">int</span> | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">scale</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">int</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "description": "relative width compared to adjacent Components in a Row. For example, if Component A has scale=2, and Component B has scale=1, A will be twice as wide as B. Should be an integer."
-        },
-        "min_width": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #33aaff\">160</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #F78C6C\">160</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">min_width</span>: <span style=\"color: #000000\">int</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">min_width</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">int</span>\n</pre></div>"
-          },
-          "description": "minimum pixel width, will wrap if not sufficient screen space to satisfy this value. If a certain scale value results in this Component being narrower than min_width, the min_width parameter will be respected first."
-        },
-        "interactive": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">interactive</span>: <span style=\"color: #000000\">bool</span> | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">interactive</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">bool</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "description": "if True, will allow users to upload and edit an image; if False, can only be used to display images. If not provided, this is inferred based on whether the component is used as an input or output."
-        },
-        "visible": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">True</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">True</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">visible</span>: <span style=\"color: #000000\">bool</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">visible</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">bool</span>\n</pre></div>"
-          },
-          "description": "If False, component will be hidden."
-        },
-        "elem_id": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">elem_id</span>: <span style=\"color: #000000\">str</span> | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">elem_id</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">str</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "description": "An optional string that is assigned as the id of this component in the HTML DOM. Can be used for targeting CSS styles."
-        },
-        "elem_classes": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">elem_classes</span>: <span style=\"color: #000000\">list</span>[<span style=\"color: #000000\">str</span>] | <span style=\"color: #000000\">str</span> | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">elem_classes</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">list</span><span style=\"color: #89DDFF\">[</span><span style=\"color: #82AAFF\">str</span><span style=\"color: #89DDFF\">]</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #82AAFF\">str</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "description": "An optional list of strings that are assigned as the classes of this component in the HTML DOM. Can be used for targeting CSS styles."
-        },
-        "show_share_button": {
-          "default": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "type": {
-            "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">show_share_button</span>: <span style=\"color: #000000\">bool</span> | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-            "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">show_share_button</span><span style=\"color: #89DDFF\">:</span> <span style=\"color: #82AAFF\">bool</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-          },
-          "description": "If True, will show a share icon in the corner of the component that allows user to share outputs to Hugging Face Spaces Discussions. If False, icon does not appear. If set to None (default behavior), then the icon appears if this Gradio app is launched on Spaces, but not otherwise."
+    "ImageSlider": {
+        "description": "Creates an image component that can be used to upload/draw images (as an input) or display images (as an output).",
+        "members": {
+            "__init__": {
+                "value": {
+                    "default": "None\n",
+                    "type": "value: str | PIL.Image.Image | numpy.ndarray | None\n",
+                    "description": "A PIL Image, numpy array, path or URL for the default value that Image component is going to take. If callable, the function will be called whenever the app loads to set the initial value of the component."
+                },
+                "height": {
+                    "default": "None\n",
+                    "type": "height: int | None\n",
+                    "description": "Height of the displayed image in pixels."
+                },
+                "width": {
+                    "default": "None\n",
+                    "type": "width: int | None\n",
+                    "description": "Width of the displayed image in pixels."
+                },
+                "type": {
+                    "default": "\"numpy\"\n",
+                    "type": "type: \"numpy\" | \"pil\" | \"filepath\"\n",
+                    "description": "The format the image is converted to before being passed into the prediction function. \"numpy\" converts the image to a numpy array with shape (height, width, 3) and values from 0 to 255, \"pil\" converts the image to a PIL image object, \"filepath\" passes a str path to a temporary file containing the image."
+                },
+                "label": {
+                    "default": "None\n",
+                    "type": "label: str | None\n",
+                    "description": "component name in interface."
+                },
+                "every": {
+                    "default": "None\n",
+                    "type": "every: float | None\n",
+                    "description": "If `value` is a callable, run the function 'every' number of seconds while the client connection is open. Has no effect otherwise. Queue must be enabled. The event can be accessed (e.g. to cancel it) via this component's .load_event attribute."
+                },
+                "show_label": {
+                    "default": "None\n",
+                    "type": "show_label: bool | None\n",
+                    "description": "if True, will display label."
+                },
+                "show_download_button": {
+                    "default": "True\n",
+                    "type": "show_download_button: bool\n",
+                    "description": "If True, will display button to download image."
+                },
+                "container": {
+                    "default": "True\n",
+                    "type": "container: bool\n",
+                    "description": "If True, will place the component in a container - providing some extra padding around the border."
+                },
+                "scale": {
+                    "default": "None\n",
+                    "type": "scale: int | None\n",
+                    "description": "relative width compared to adjacent Components in a Row. For example, if Component A has scale=2, and Component B has scale=1, A will be twice as wide as B. Should be an integer."
+                },
+                "min_width": {
+                    "default": "160\n",
+                    "type": "min_width: int\n",
+                    "description": "minimum pixel width, will wrap if not sufficient screen space to satisfy this value. If a certain scale value results in this Component being narrower than min_width, the min_width parameter will be respected first."
+                },
+                "interactive": {
+                    "default": "None\n",
+                    "type": "interactive: bool | None\n",
+                    "description": "if True, will allow users to upload and edit an image; if False, can only be used to display images. If not provided, this is inferred based on whether the component is used as an input or output."
+                },
+                "visible": {
+                    "default": "True\n",
+                    "type": "visible: bool\n",
+                    "description": "If False, component will be hidden."
+                },
+                "elem_id": {
+                    "default": "None\n",
+                    "type": "elem_id: str | None\n",
+                    "description": "An optional string that is assigned as the id of this component in the HTML DOM. Can be used for targeting CSS styles."
+                },
+                "elem_classes": {
+                    "default": "None\n",
+                    "type": "elem_classes: list[str] | str | None\n",
+                    "description": "An optional list of strings that are assigned as the classes of this component in the HTML DOM. Can be used for targeting CSS styles."
+                },
+                "show_share_button": {
+                    "default": "None\n",
+                    "type": "show_share_button: bool | None\n",
+                    "description": "If True, will show a share icon in the corner of the component that allows user to share outputs to Hugging Face Spaces Discussions. If False, icon does not appear. If set to None (default behavior), then the icon appears if this Gradio app is launched on Spaces, but not otherwise."
+                }
+            },
+            "postprocess": {
+                "type": "\n    tuple[\n        numpy.ndarray\n        | PIL.Image.Image\n        | str\n        | pathlib.Path\n        | None,\n        numpy.ndarray\n        | PIL.Image.Image\n        | str\n        | pathlib.Path\n        | None,\n    ]\n    | None\n",
+                "return": "\n    tuple[\n        gradio.data_classes.FileData | str | None,\n        gradio.data_classes.FileData | str | None,\n    ]\n    | None\n"
+            },
+            "preprocess": {
+                "type": "SliderData\n",
+                "return": "\n    tuple[\n        numpy.ndarray | PIL.Image.Image | str | None,\n        numpy.ndarray | PIL.Image.Image | str | None,\n    ]\n    | None\n"
+            }
         }
-      },
-      "postprocess": {
-        "description": "Parameters:\n    y: image as a numpy array, PIL Image, string/Path filepath, or string URL\nReturns:\n    base64 url data",
-        "type": {
-          "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span>    <span style=\"color: #000000\">tuple</span>[\n        <span style=\"color: #000000\">numpy</span>.<span style=\"color: #000000\">ndarray</span>\n        | <span style=\"color: #000000\">PIL</span>.<span style=\"color: #000000\">Image</span>.<span style=\"color: #000000\">Image</span>\n        | <span style=\"color: #000000\">str</span>\n        | <span style=\"color: #000000\">pathlib</span>.<span style=\"color: #000000\">Path</span>\n        | <span style=\"color: #0000ff\">None</span>,\n        <span style=\"color: #000000\">numpy</span>.<span style=\"color: #000000\">ndarray</span>\n        | <span style=\"color: #000000\">PIL</span>.<span style=\"color: #000000\">Image</span>.<span style=\"color: #000000\">Image</span>\n        | <span style=\"color: #000000\">str</span>\n        | <span style=\"color: #000000\">pathlib</span>.<span style=\"color: #000000\">Path</span>\n        | <span style=\"color: #0000ff\">None</span>,\n    ]\n    | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-          "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span>    <span style=\"color: #82AAFF\">tuple</span><span style=\"color: #89DDFF\">[</span>\n        <span style=\"color: #EEFFFF\">numpy</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">ndarray</span>\n        <span style=\"color: #89DDFF\">|</span> <span style=\"color: #EEFFFF\">PIL</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Image</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Image</span>\n        <span style=\"color: #89DDFF\">|</span> <span style=\"color: #82AAFF\">str</span>\n        <span style=\"color: #89DDFF\">|</span> <span style=\"color: #EEFFFF\">pathlib</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Path</span>\n        <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None,</span>\n        <span style=\"color: #EEFFFF\">numpy</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">ndarray</span>\n        <span style=\"color: #89DDFF\">|</span> <span style=\"color: #EEFFFF\">PIL</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Image</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Image</span>\n        <span style=\"color: #89DDFF\">|</span> <span style=\"color: #82AAFF\">str</span>\n        <span style=\"color: #89DDFF\">|</span> <span style=\"color: #EEFFFF\">pathlib</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Path</span>\n        <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None,</span>\n    <span style=\"color: #89DDFF\">]</span>\n    <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-        },
-        "return": [
-          "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span>    <span style=\"color: #000000\">tuple</span>[\n        <span style=\"color: #000000\">gradio</span>.<span style=\"color: #000000\">data_classes</span>.<span style=\"color: #000000\">FileData</span> | <span style=\"color: #000000\">str</span> | <span style=\"color: #0000ff\">None</span>,\n        <span style=\"color: #000000\">gradio</span>.<span style=\"color: #000000\">data_classes</span>.<span style=\"color: #000000\">FileData</span> | <span style=\"color: #000000\">str</span> | <span style=\"color: #0000ff\">None</span>,\n    ]\n    | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-          "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span>    <span style=\"color: #82AAFF\">tuple</span><span style=\"color: #89DDFF\">[</span>\n        <span style=\"color: #EEFFFF\">gradio</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">data_classes</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">FileData</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #82AAFF\">str</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None,</span>\n        <span style=\"color: #EEFFFF\">gradio</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">data_classes</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">FileData</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #82AAFF\">str</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None,</span>\n    <span style=\"color: #89DDFF\">]</span>\n    <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-        ]
-      },
-      "preprocess": {
-        "description": "Parameters:\n    x: base64 url data, or (if tool == \"sketch\") a dict of image and mask base64 url data\nReturns:\n    image in requested format, or (if tool == \"sketch\") a dict of image and mask in requested format",
-        "type": {
-          "light": "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #000000\">SliderData</span>\n</pre></div>",
-          "dark": "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span><span style=\"color: #EEFFFF\">SliderData</span>\n</pre></div>"
-        },
-        "return": [
-          "<div class=\"highlight\" style=\"background: #ffffff\"><pre style=\"line-height: 125%;\"><span></span>    <span style=\"color: #000000\">tuple</span>[\n        <span style=\"color: #000000\">numpy</span>.<span style=\"color: #000000\">ndarray</span> | <span style=\"color: #000000\">PIL</span>.<span style=\"color: #000000\">Image</span>.<span style=\"color: #000000\">Image</span> | <span style=\"color: #000000\">str</span> | <span style=\"color: #0000ff\">None</span>,\n        <span style=\"color: #000000\">numpy</span>.<span style=\"color: #000000\">ndarray</span> | <span style=\"color: #000000\">PIL</span>.<span style=\"color: #000000\">Image</span>.<span style=\"color: #000000\">Image</span> | <span style=\"color: #000000\">str</span> | <span style=\"color: #0000ff\">None</span>,\n    ]\n    | <span style=\"color: #0000ff\">None</span>\n</pre></div>",
-          "<div class=\"highlight\" style=\"background: #263238\"><pre style=\"line-height: 125%;\"><span></span>    <span style=\"color: #82AAFF\">tuple</span><span style=\"color: #89DDFF\">[</span>\n        <span style=\"color: #EEFFFF\">numpy</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">ndarray</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #EEFFFF\">PIL</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Image</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Image</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #82AAFF\">str</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None,</span>\n        <span style=\"color: #EEFFFF\">numpy</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">ndarray</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #EEFFFF\">PIL</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Image</span><span style=\"color: #89DDFF\">.</span><span style=\"color: #EEFFFF\">Image</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #82AAFF\">str</span> <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None,</span>\n    <span style=\"color: #89DDFF\">]</span>\n    <span style=\"color: #89DDFF\">|</span> <span style=\"color: #89DDFF\">None</span>\n</pre></div>"
-        ]
-      }
     }
-  }
 }
