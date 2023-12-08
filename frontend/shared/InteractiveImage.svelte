@@ -10,6 +10,7 @@
 	import type { LoadingStatus } from "@gradio/statustracker";
 	import { UploadText } from "@gradio/atoms";
 	import type { FileData } from "@gradio/client";
+	import { clamp } from "./utils";
 
 	export let elem_id = "";
 	export let elem_classes: string[] = [];
@@ -26,6 +27,7 @@
 	export let min_width: number | undefined = undefined;
 	export let loading_status: LoadingStatus;
 	export let root: string;
+	export let position: number;
 
 	export let gradio: Gradio<{
 		change: never;
@@ -67,6 +69,7 @@
 	/>
 
 	<Image
+		{position}
 		bind:value
 		{root}
 		on:edit={() => gradio.dispatch("edit")}

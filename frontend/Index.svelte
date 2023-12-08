@@ -18,6 +18,7 @@
 	export let width: number | undefined;
 	export let loading_status: LoadingStatus;
 	export let interactive: boolean;
+	export let position: number;
 
 	export let gradio: Gradio<{
 		change: never;
@@ -45,6 +46,7 @@
 		{width}
 		{root}
 		{gradio}
+		{position}
 	/>
 {:else}
 	<StaticImage
@@ -59,5 +61,6 @@
 		{width}
 		{root}
 		{gradio}
+		{position}
 	/>
 {/if}
