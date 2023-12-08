@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    # paths-ignore:
-    #   - "pyproject.toml"
 
 jobs:
   publish:
