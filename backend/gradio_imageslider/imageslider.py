@@ -36,11 +36,7 @@ class ImageSlider(Component):
     template_path = "./slider/templates"
 
     EVENTS = [
-        Events.edit,
-        Events.clear,
         Events.change,
-        Events.stream,
-        Events.select,
         Events.upload,
     ]
 
@@ -157,10 +153,9 @@ class ImageSlider(Component):
     def preprocess(
         self, x: SliderData
     ) -> (
-        tuple[
-            np.ndarray | _Image.Image | str | None,
-            np.ndarray | _Image.Image | str | None,
-        ]
+        tuple[str, str]
+        | tuple[_Image.Image, _Image.Image]
+        | tuple[np.ndarray, np.ndarray]
         | None
     ):
         """
@@ -190,10 +185,9 @@ class ImageSlider(Component):
 
     def postprocess(
         self,
-        y: tuple[
-            np.ndarray | _Image.Image | str | Path | None,
-            np.ndarray | _Image.Image | str | Path | None,
-        ]
+        y: tuple[str, str]
+        | tuple[_Image.Image, _Image.Image]
+        | tuple[np.ndarray, np.ndarray]
         | None,
     ) -> tuple[FileData | str | None, FileData | str | None] | None:
         """
