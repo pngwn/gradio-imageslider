@@ -26,8 +26,11 @@ jobs:
           cache-dependency-path: frontend/pnpm-lock.yaml
       - name: Install gradio
         run: python -m pip install gradio build twine
-      - name: Build pr package
-        run: |
-          gradio cc install --npm-install="pnpm i"
-          gradio cc build 
-          gradio cc publish --pypi-username=__token__ --pypi-password=${{ secrets.PYPI_API_TOKEN }} --upload-demo --no-upload-source --hf-token=${{ secrets.HF_TOKEN }}
+      - run: gradio cc install --npm-install="pnpm i"
+      - run: gradio cc docs
+      - run: gradio cc build --no-generate-docs
+      - name: Publish package to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+      - run: gradio cc publish --no-upload-pypi --upload-demo --no-upload-source --hf-token=${{ secrets.HF_TOKEN }}
