@@ -91,7 +91,7 @@
 		position: absolute;
 		height: 100%;
 		width: 100%;
-		--anim-block-background-fill: 0, 0, 0;
+		--anim-block-background-fill: 255, 255, 255;
 		z-index: 1;
 		pointer-events: none;
 	}

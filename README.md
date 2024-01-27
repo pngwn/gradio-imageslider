@@ -17,18 +17,15 @@ import gradio as gr
 from gradio_imageslider import ImageSlider
 from PIL import ImageFilter
 
-
 def fn(im):
-    print(f"fn: {im}")
     if not im or not im[0]:
         return im
-    print(f"fn not none: {im}")
     return (im[0], im[0].filter(filter=ImageFilter.GaussianBlur(radius=10)))
 
-
 with gr.Blocks() as demo:
-    img1 = ImageSlider(upload_count=1, type="pil")
-    img1.upload(fn, inputs=img1, outputs=img1)
+    with gr.Group():
+        img1 = ImageSlider(label="Blur image", type="pil")
+        img1.upload(fn, inputs=img1, outputs=img1)
 
 if __name__ == "__main__":
     demo.launch()
@@ -87,7 +84,7 @@ int
 ```
 
 </td>
-<td align="left"><code>2</code></td>
+<td align="left"><code>1</code></td>
 <td align="left">The number of images that can be uploaded to the component. 1 or 2.</td>
 </tr>
 

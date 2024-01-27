@@ -163,7 +163,7 @@
 	}
 
 	.fixed {
-		--anim-block-background-fill: 0, 0, 0;
+		--anim-block-background-fill: 255, 255, 255;
 		position: absolute;
 		top: 0;
 		left: 0;
