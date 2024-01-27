@@ -1,6 +1,6 @@
 
 # `gradio_imageslider`
-<a href="https://pypi.org/project/gradio_imageslider/" target="_blank"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/gradio_imageslider"></a>  
+<a href="https://pypi.org/project/gradio_imageslider/" target="_blank"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/gradio_imageslider"></a> <a href="https://github.com/pngwn/gradio-imageslider/issues" target="_blank"><img alt="Static Badge" src="https://img.shields.io/badge/Issues-white?logo=github&logoColor=black"></a> 
 
 A Gradio component for comparing two images.
 
