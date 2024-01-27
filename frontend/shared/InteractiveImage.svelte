@@ -3,6 +3,7 @@
 <script lang="ts">
 	import type { Gradio, SelectData, ShareData } from "@gradio/utils";
 	import Image from "./Image.svelte";
+	import { normalise_file } from "@gradio/client";
 
 	import { Block } from "@gradio/atoms";
 
@@ -10,7 +11,6 @@
 	import type { LoadingStatus } from "@gradio/statustracker";
 	import { UploadText } from "@gradio/atoms";
 	import type { FileData } from "@gradio/client";
-	import { clamp } from "./utils";
 
 	export let elem_id = "";
 	export let elem_classes: string[] = [];
@@ -28,6 +28,8 @@
 	export let loading_status: LoadingStatus;
 	export let root: string;
 	export let position: number;
+	export let upload_count: number = 2;
+	export let layer_images = true;
 
 	export let gradio: Gradio<{
 		change: never;
@@ -43,9 +45,19 @@
 
 	$: value, gradio.dispatch("change");
 	let dragging: boolean;
-	const FIXED_HEIGHT = 340;
 
-	$: value = !value ? null : value;
+	$: value = !value
+		? null
+		: (normalise_file(value, root, null) as [FileData, FileData]);
+
+	async function handle_upload({
+		detail
+	}: CustomEvent<[FileData, FileData]>): Promise<void> {
+		value = detail;
+		gradio.dispatch("upload");
+	}
+
+	$: console.log(height);
 </script>
 
 <Block
@@ -55,7 +67,7 @@
 	padding={false}
 	{elem_id}
 	{elem_classes}
-	height={height || FIXED_HEIGHT}
+	{height}
 	{width}
 	allow_overflow={false}
 	{container}
@@ -76,11 +88,13 @@
 		on:clear={() => gradio.dispatch("clear")}
 		on:stream={() => gradio.dispatch("stream")}
 		on:drag={({ detail }) => (dragging = detail)}
-		on:upload={() => gradio.dispatch("upload")}
+		on:upload={handle_upload}
 		on:select={({ detail }) => gradio.dispatch("select", detail)}
 		on:share={({ detail }) => gradio.dispatch("share", detail)}
 		{label}
 		{show_label}
+		{upload_count}
+		{layer_images}
 	>
 		<UploadText i18n={gradio.i18n} type="image" />
 	</Image>

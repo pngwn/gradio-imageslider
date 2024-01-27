@@ -21,7 +21,16 @@ _Image.init()  # fixes https://github.com/gradio-app/gradio/issues/2843
 
 
 class SliderData(GradioRootModel):
-    root: Union[Tuple[FileData, FileData], None]
+    root: Union[Tuple[FileData | None, FileData | None], None]
+
+
+image_variants = _Image.Image | np.ndarray | str | Path | FileData | None
+image_tuple = (
+    tuple[str, str]
+    | tuple[_Image.Image, _Image.Image]
+    | tuple[np.ndarray, np.ndarray]
+    | None
+)
 
 
 @document()
@@ -44,10 +53,9 @@ class ImageSlider(Component):
 
     def __init__(
         self,
-        value: tuple[str, str]
-        | tuple[_Image.Image, _Image.Image]
-        | tuple[np.ndarray, np.ndarray]
-        | None = None,
+        value: image_tuple = None,
+        position: int = 0.5,
+        upload_count: int = 1,
         *,
         height: int | None = None,
         width: int | None = None,
@@ -64,12 +72,13 @@ class ImageSlider(Component):
         elem_id: str | None = None,
         elem_classes: list[str] | str | None = None,
         show_share_button: bool | None = None,
-        position: int = 0.5,
         **kwargs,
     ):
         """
         Parameters:
             value: A PIL Image, numpy array, path or URL for the default value that Image component is going to take. If callable, the function will be called whenever the app loads to set the initial value of the component.
+            position: The position of the slider, between 0 and 1.
+            upload_count: The number of images that can be uploaded to the component. 1 or 2.
             height: Height of the displayed image in pixels.
             width: Width of the displayed image in pixels.
             type: The format the image is converted to before being passed into the prediction function. "numpy" converts the image to a numpy array with shape (height, width, 3) and values from 0 to 255, "pil" converts the image to a PIL image object, "filepath" passes a str path to a temporary file containing the image.
@@ -85,7 +94,6 @@ class ImageSlider(Component):
             elem_id: An optional string that is assigned as the id of this component in the HTML DOM. Can be used for targeting CSS styles.
             elem_classes: An optional list of strings that are assigned as the classes of this component in the HTML DOM. Can be used for targeting CSS styles.
             show_share_button: If True, will show a share icon in the corner of the component that allows user to share outputs to Hugging Face Spaces Discussions. If False, icon does not appear. If set to None (default behavior), then the icon appears if this Gradio app is launched on Spaces, but not otherwise.
-            position: The position of the slider, between 0 and 1.
         """
 
         valid_types = ["numpy", "pil", "filepath"]
@@ -103,6 +111,7 @@ class ImageSlider(Component):
             else show_share_button
         )
         self.position = position
+        self.upload_count = upload_count
         super().__init__(
             label=label,
             every=every,
@@ -118,9 +127,7 @@ class ImageSlider(Component):
             **kwargs,
         )
 
-    def _format_image(
-        self, im: _Image.Image | None
-    ) -> np.ndarray | _Image.Image | str | None:
+    def _format_image(self, im: _Image.Image | None) -> image_variants:
         """Helper method to format an image based on self.type"""
         if im is None:
             return im
@@ -142,22 +149,17 @@ class ImageSlider(Component):
                 + ". Please choose from: 'numpy', 'pil', 'filepath'."
             )
 
-    def _preprocess_image(self, x: str | FileData):
-        if isinstance(x, str):
+    def _preprocess_image(self, x: str | FileData | None):
+        if x is None:
+            return x
+        elif isinstance(x, str):
             im = processing_utils.decode_base64_to_image(x)
         else:
             im = _Image.open(x.path)
 
         return self._format_image(im)
 
-    def preprocess(
-        self, x: SliderData
-    ) -> (
-        tuple[str, str]
-        | tuple[_Image.Image, _Image.Image]
-        | tuple[np.ndarray, np.ndarray]
-        | None
-    ):
+    def preprocess(self, x: SliderData) -> image_tuple:
         """
         Parameters:
             x: SliderData object containing images as numpy arrays, PIL Images, string/Path filepaths, or string urls.
@@ -169,7 +171,7 @@ class ImageSlider(Component):
 
         return self._preprocess_image(x.root[0]), self._preprocess_image(x.root[1])
 
-    def _postprocess_image(self, y: np.ndarray | _Image.Image | str | Path | None):
+    def _postprocess_image(self, y: image_variants):
         if isinstance(y, np.ndarray):
             path = processing_utils.save_img_array_to_cache(
                 y, cache_dir=self.GRADIO_CACHE
@@ -185,10 +187,7 @@ class ImageSlider(Component):
 
     def postprocess(
         self,
-        y: tuple[str, str]
-        | tuple[_Image.Image, _Image.Image]
-        | tuple[np.ndarray, np.ndarray]
-        | None,
+        y: image_tuple,
     ) -> tuple[FileData | str | None, FileData | str | None] | None:
         """
         Parameters:

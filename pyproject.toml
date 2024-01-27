@@ -12,7 +12,7 @@ version = "0.0.17"
 description = "Python library for easily interacting with trained machine learning models"
 license = "Apache-2.0"
 requires-python = ">=3.8"
-authors = [{ name = "YOUR NAME", email = "YOUREMAIL@domain.com" }]
+authors = [{ name = "pngwn", email = "YOUREMAIL@domain.com" }]
 keywords = [
   "machine learning",
   "reproducibility",
@@ -41,6 +41,7 @@ classifiers = [
 artifacts = [
   "backend/gradio_imageslider/boo",
   "*.pyi",
+  "backend/gradio_imageslider/templates",
   "backend/gradio_imageslider/templates",
   "backend/gradio_imageslider/templates",
   "backend/gradio_imageslider/templates",

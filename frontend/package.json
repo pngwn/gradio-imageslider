@@ -26,5 +26,10 @@
 		".": "./Index.svelte",
 		"./package.json": "./package.json",
 		"./example": "./example/index.ts"
+	},
+	"pnpm": {
+		"patchedDependencies": {
+			"@gradio/upload@0.5.1": "patches/@gradio__upload@0.5.1.patch"
+		}
 	}
 }

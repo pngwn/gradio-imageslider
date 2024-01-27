@@ -19,6 +19,7 @@
 	export let loading_status: LoadingStatus;
 	export let interactive: boolean;
 	export let position: number;
+	export let upload_count: number = 2;
 
 	export let gradio: Gradio<{
 		change: never;
@@ -31,6 +32,10 @@
 		select: SelectData;
 		share: ShareData;
 	}>;
+
+	// const FIXED_HEIGHT = 340;
+
+	// $: console.log(value, interactive);
 </script>
 
 {#if interactive}
@@ -38,7 +43,7 @@
 		{elem_id}
 		{elem_classes}
 		{visible}
-		{value}
+		bind:value
 		{label}
 		{show_label}
 		{loading_status}
@@ -47,13 +52,15 @@
 		{root}
 		{gradio}
 		{position}
+		{upload_count}
+		layer_images={value && value[0] != null && value[1] != null}
 	/>
 {:else}
 	<StaticImage
 		{elem_id}
 		{elem_classes}
 		{visible}
-		{value}
+		bind:value
 		{label}
 		{show_label}
 		{loading_status}
@@ -62,5 +69,7 @@
 		{root}
 		{gradio}
 		{position}
+		layer_images={true}
+		{upload_count}
 	/>
 {/if}

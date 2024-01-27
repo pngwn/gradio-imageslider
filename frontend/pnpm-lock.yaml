@@ -1,5 +1,14 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+patchedDependencies:
+  '@gradio/upload@0.5.1':
+    hash: hnhcb5tybyyqjxwndz34oazm6a
+    path: patches/@gradio__upload@0.5.1.patch
+
 dependencies:
   '@gradio/atoms':
     specifier: 0.3.0
@@ -15,7 +24,7 @@ dependencies:
     version: 0.4.0(svelte@4.2.1)
   '@gradio/upload':
     specifier: 0.5.1
-    version: 0.5.1(svelte@4.2.1)
+    version: 0.5.1(patch_hash=hnhcb5tybyyqjxwndz34oazm6a)(svelte@4.2.1)
   '@gradio/utils':
     specifier: 0.2.0
     version: 0.2.0(svelte@4.2.1)
@@ -323,7 +332,7 @@ packages:
     resolution: {integrity: sha512-33c68Nk7oRXLn08OxPfjcPm7S4tXGOUV1I1bVgzdM2YV5o1QBOS1GEnXPZPu/CEYPePLMB6bsDwffrLEyLGWVQ==}
     dev: false
 
-  /@gradio/upload@0.5.1(svelte@4.2.1):
+  /@gradio/upload@0.5.1(patch_hash=hnhcb5tybyyqjxwndz34oazm6a)(svelte@4.2.1):
     resolution: {integrity: sha512-1JOEt6zwEIAMoX64aRQ3zi08ZzFSpkmgfepuGOxTeXt5SSi5Xc+TDHsYftA6WAtUAPUwoXsfwrFNxuNSe6vTDg==}
     dependencies:
       '@gradio/atoms': 0.3.0(svelte@4.2.1)
@@ -334,6 +343,7 @@ packages:
       - svelte
       - utf-8-validate
     dev: false
+    patched: true
 
   /@gradio/utils@0.2.0(svelte@4.2.1):
     resolution: {integrity: sha512-YkwzXufi6IxQrlMW+1sFo8Yn6F9NLL69ZoBsbo7QEhms0v5L7pmOTw+dfd7M3dwbRP2lgjrb52i1kAIN3n6aqQ==}
@@ -743,7 +753,3 @@ packages:
     dependencies:
       bufferutil: 4.0.7
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

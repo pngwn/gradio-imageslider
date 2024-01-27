@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
 	import { drag } from "d3-drag";
 	import { select } from "d3-selection";
+	import { clamp } from "./utils";
 
 	export let position = 0.5;
 	export let disabled = false;
@@ -14,7 +15,7 @@
 
 	function set_position() {
 		box = el.getBoundingClientRect();
-		px = box.width * position - 10;
+		px = clamp(box.width * position - 10, 0, box.width - 20);
 	}
 	function round(n, points) {
 		const mod = Math.pow(10, points);
