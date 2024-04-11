@@ -12,6 +12,7 @@
 	export let visible = true;
 	export let value: [FileData | null, FileData | null] = [null, null];
 	export let label: string;
+	export let show_download_button: boolean;
 	export let show_label: boolean;
 	export let root: string;
 	export let height: number | undefined;
@@ -63,6 +64,7 @@
 		bind:value
 		{label}
 		{show_label}
+		{show_download_button}
 		{loading_status}
 		{height}
 		{width}
