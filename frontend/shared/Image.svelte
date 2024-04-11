@@ -1,13 +1,15 @@
 <script lang="ts">
 	import Slider from "../shared/Slider.svelte";
 	import { createEventDispatcher, tick, onMount } from "svelte";
-	import { BlockLabel, Empty } from "@gradio/atoms";
+	import { BlockLabel, Empty, IconButton } from "@gradio/atoms";
+   	import { Download } from "@gradio/icons";
 	import { Image } from "@gradio/icons";
 	import { type SelectData } from "@gradio/utils";
 	import ClearImage from "./ClearImage.svelte";
 
 	import { Upload } from "@gradio/upload";
-
+    import { DownloadLink } from "@gradio/wasm/svelte";
+    
 	import { type FileData, normalise_file } from "@gradio/client";
 
 	export let value: [FileData | null, FileData | null];
@@ -18,6 +20,7 @@
 	export let position: number;
 	export let upload_count: number = 2;
 	export let layer_images = true;
+    export let show_download_button = true;
 
 	let value_: [FileData | null, FileData | null] = value || [null, null];
 
@@ -77,6 +80,15 @@
 			}}
 		/>
 	{/if}
+    {#if value?.[1]?.url}
+        <div class="icon-buttons">
+                {#if show_download_button}
+                    <DownloadLink href={value[1].url} download={value[1].orig_name || "image"}>
+                        <IconButton Icon={Download} />
+                    </DownloadLink>
+                {/if}
+        </div>
+    {/if}
 	<Slider bind:position disabled={upload_count == 2 || !value?.[0]}>
 		<div
 			class="upload-wrap"
@@ -186,4 +198,22 @@
 	.empty-wrap {
 		pointer-events: none;
 	}
+    .icon-button {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		z-index: var(--layer-1);
+    }
+
+    .icon-buttons {
+        display: flex;
+        position: absolute;
+        right: 34px;
+        z-index: var(--layer-2);
+        top: 8px;
+    }
+
+    .icon-buttons .download-button-container {
+        margin: var(--size-1) 0;
+    }
 </style>
