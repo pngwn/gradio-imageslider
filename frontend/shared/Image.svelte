@@ -34,19 +34,19 @@
 			value[n] = normalise_file(detail[0], root, null);
 		}
 
-		console.log("upload", value_);
 
 		await tick();
 
 		dispatch("upload", value);
 	}
 
-	$: if (value !== value_) {
+	let old_value = "";
+
+	$: if (JSON.stringify(value) !== old_value) {
+		old_value = JSON.stringify(value);
 		value_ = value;
-		normalise_file(value_, root, null);
 	}
 
-	$: console.log(value_);
 	const dispatch = createEventDispatcher<{
 		change: string | null;
 		stream: string | null;
@@ -62,8 +62,7 @@
 	$: dispatch("drag", dragging);
 	$: style =
 		upload_count === 1 ? `clip-path: inset(0 0 0 ${position * 100}%)` : "";
-	$: console.log(`${(1 - position) * 100}%`);
-	$: console.log(position);
+	
 
 	let el_width: number;
 </script>
@@ -74,6 +73,7 @@
 	{#if value?.[0]?.url || value?.[1]?.url}
 		<ClearImage
 			on:remove_image={() => {
+				position = 0.5;
 				value = [null, null];
 				dispatch("clear");
 			}}

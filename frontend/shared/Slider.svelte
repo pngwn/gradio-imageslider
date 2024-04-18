@@ -13,6 +13,8 @@
 	let box;
 	let px = 0;
 
+	$: px = box ? clamp(box.width * position - 10, 0, box.width - 20) : 0;
+
 	function set_position() {
 		box = el.getBoundingClientRect();
 		px = clamp(box.width * position - 10, 0, box.width - 20);
