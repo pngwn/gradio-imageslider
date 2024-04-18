@@ -2,9 +2,7 @@
 	import Slider from "./Slider.svelte";
 
 	import { BlockLabel, Empty, IconButton } from "@gradio/atoms";
-
-	import { Image } from "@gradio/icons";
-	import { Download } from "@gradio/icons";
+	import { Image, Download } from "@gradio/icons";
 	import { type FileData, normalise_file } from "@gradio/client";
 	import type { I18nFormatter } from "@gradio/utils";
 	import { DownloadLink } from "@gradio/wasm/svelte";

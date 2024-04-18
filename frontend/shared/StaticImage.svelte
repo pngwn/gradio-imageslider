@@ -4,11 +4,13 @@
 	import type { Gradio, SelectData } from "@gradio/utils";
 	import StaticImage from "./ImagePreview.svelte";
 
-	import { Block } from "@gradio/atoms";
-
+	import { Block, IconButton } from "@gradio/atoms";
 	import { StatusTracker } from "@gradio/statustracker";
 	import type { LoadingStatus } from "@gradio/statustracker";
 	import type { FileData } from "@gradio/client";
+	import { DownloadLink } from "@gradio/wasm/svelte";
+	import {  Download } from "@gradio/icons";
+	import type { I18nFormatter } from "@gradio/utils";
 
 	export let elem_id = "";
 	export let elem_classes: string[] = [];
@@ -18,10 +20,11 @@
 	export let show_label: boolean;
 	export let root: string;
 	export let upload_count: number = 2;
-
+	export let show_download_button = true;
 	export let height: number;
 	export let width: number | undefined;
 	export let layer_images = true;
+	export let i18n: I18nFormatter;
 
 	export let container = true;
 	export let scale: number | null = null;
@@ -58,6 +61,15 @@
 	{scale}
 	{min_width}
 >
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y-no-noninteractive-element-interactions-->
+	<div class="icon-buttons">
+		{#if show_download_button && value && value[1]}
+			<DownloadLink href={value[1].url} download={value[1].orig_name || "image"}>
+				<IconButton Icon={Download} label={i18n("common.download")} />
+			</DownloadLink>
+		{/if}
+	</div>
 	<div
 		class="status-wrap"
 		class:half={is_half}
@@ -125,5 +137,12 @@
 
 	.status-wrap.half :global(.eta-bar) {
 		opacity: 0;
+	}
+	.icon-buttons {
+		display: flex;
+		position: absolute;
+		right: 6px;
+		z-index: var(--layer-1);
+		top: 6px;
 	}
 </style>

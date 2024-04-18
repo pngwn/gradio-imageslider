@@ -58,6 +58,7 @@
 	/>
 {:else}
 	<StaticImage
+		i18n={gradio.i18n}
 		{elem_id}
 		{elem_classes}
 		{visible}

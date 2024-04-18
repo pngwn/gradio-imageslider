@@ -28,6 +28,9 @@ dependencies:
   '@gradio/utils':
     specifier: 0.2.0
     version: 0.2.0(svelte@4.2.1)
+  '@gradio/wasm':
+    specifier: ^0.10.0
+    version: 0.10.0
   cropperjs:
     specifier: ^1.5.12
     version: 1.5.12
@@ -354,6 +357,13 @@ packages:
       - svelte
     dev: false
 
+  /@gradio/wasm@0.10.0:
+    resolution: {integrity: sha512-ephuiuimvMad6KzNPz/3OdnjgE5wsJdVfAAqu+J0qloetbH42LfeRLsVe5WqGo2WpjzXq5MC8I8MJ7lpQMhUpw==}
+    dependencies:
+      '@types/path-browserify': 1.0.2
+      path-browserify: 1.0.1
+    dev: false
+
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
     engines: {node: '>=6.0.0'}
@@ -386,6 +396,10 @@ packages:
 
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
+    dev: false
+
+  /@types/path-browserify@1.0.2:
+    resolution: {integrity: sha512-ZkC5IUqqIFPXx3ASTTybTzmQdwHwe2C0u3eL75ldQ6T9E9IWFJodn6hIfbZGab73DfyiHN4Xw15gNxUq2FbvBA==}
     dev: false
 
   /acorn@8.10.0:
@@ -646,6 +660,10 @@ packages:
   /node-gyp-build@4.6.1:
     resolution: {integrity: sha512-24vnklJmyRS8ViBNI8KbtK/r/DmXQMRiOMXTNz2nrTnAYUwjmEEbnnpB/+kt+yWRv73bPsSPRFddrcIbAxSiMQ==}
     hasBin: true
+    dev: false
+
+  /path-browserify@1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
     dev: false
 
   /periscopic@3.1.0:
