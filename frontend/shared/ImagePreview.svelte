@@ -1,14 +1,15 @@
 <script lang="ts">
 	import Slider from "./Slider.svelte";
 
-	import { BlockLabel, Empty } from "@gradio/atoms";
-
-	import { Image } from "@gradio/icons";
+	import { BlockLabel, Empty, IconButton } from "@gradio/atoms";
+	import { Image, Download } from "@gradio/icons";
 	import { type FileData, normalise_file } from "@gradio/client";
 	import type { I18nFormatter } from "@gradio/utils";
+	import { DownloadLink } from "@gradio/wasm/svelte";
 
 	export let value: [null | FileData, null | FileData] = [null, null];
 	export let label: string | undefined = undefined;
+	export let show_download_button = true;
 	export let show_label: boolean;
 	export let root: string;
 	export let i18n: I18nFormatter;
@@ -29,7 +30,13 @@
 {:else}
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-noninteractive-element-interactions-->
-
+	<div class="icon-buttons">
+		{#if show_download_button}
+			<DownloadLink href={value[1].url} download={value[1].orig_name || "image"}>
+				<IconButton Icon={Download} label={i18n("common.download")} />
+			</DownloadLink>
+		{/if}
+	</div>
 	<div class="slider-wrap" bind:clientWidth={el_width}>
 		<Slider bind:position>
 			<img src={value?.[0]?.url} alt="" loading="lazy" />
@@ -65,4 +72,22 @@
 	.hidden {
 		opacity: 0;
 	}
+    .icon-button {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		z-index: var(--layer-1);
+    }
+
+    .icon-buttons {
+        display: flex;
+        position: absolute;
+        right: 6px;
+        z-index: var(--layer-1);
+        top: 6px;
+    }
+
+    .icon-buttons .download-button-container {
+        margin: var(--size-1) 0;
+    }
 </style>

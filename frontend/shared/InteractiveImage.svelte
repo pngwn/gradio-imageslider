@@ -3,6 +3,8 @@
 <script lang="ts">
 	import type { Gradio, SelectData, ShareData } from "@gradio/utils";
 	import Image from "./Image.svelte";
+
+	
 	import { normalise_file } from "@gradio/client";
 
 	import { Block } from "@gradio/atoms";
@@ -29,7 +31,6 @@
 	export let root: string;
 	export let position: number;
 	export let upload_count: number = 2;
-	export let layer_images = true;
 
 	export let gradio: Gradio<{
 		change: never;
@@ -94,7 +95,6 @@
 		{label}
 		{show_label}
 		{upload_count}
-		{layer_images}
 	>
 		<UploadText i18n={gradio.i18n} type="image" />
 	</Image>
