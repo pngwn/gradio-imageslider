@@ -8,8 +8,8 @@
 	import ClearImage from "./ClearImage.svelte";
 
 	import { Upload } from "@gradio/upload";
-    import { DownloadLink } from "@gradio/wasm/svelte";
-    
+	import { DownloadLink } from "@gradio/wasm/svelte";
+
 	import { type FileData, normalise_file } from "@gradio/client";
 
 	export let value: [FileData | null, FileData | null];
@@ -19,8 +19,7 @@
 	export let root: string;
 	export let position: number;
 	export let upload_count: number = 2;
-	export let layer_images = true;
-    export let show_download_button = true;
+	export let show_download_button = true;
 
 	let value_: [FileData | null, FileData | null] = value || [null, null];
 
