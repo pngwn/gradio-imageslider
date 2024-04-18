@@ -34,9 +34,7 @@
 		share: ShareData;
 	}>;
 
-	// const FIXED_HEIGHT = 340;
 
-	// $: console.log(value, interactive);
 </script>
 
 {#if interactive}
@@ -54,7 +52,6 @@
 		{gradio}
 		{position}
 		{upload_count}
-		layer_images={value && value[0] != null && value[1] != null}
 	/>
 {:else}
 	<StaticImage

@@ -58,7 +58,6 @@
 		gradio.dispatch("upload");
 	}
 
-	$: console.log(height);
 </script>
 
 <Block
