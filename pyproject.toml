@@ -22,7 +22,7 @@ This component can be used in several ways:
 
 readme = "README.md"
 license = "Apache-2.0"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 authors = [{ name = "pngwn", email = "hello@pngwn.io" }]
 keywords = [
   "machine learning",
@@ -32,7 +32,7 @@ keywords = [
   "gradio custom component",
 ]
 # Add dependencies here
-dependencies = []
+dependencies = ["gradio", "PIL"]
 classifiers = [
   'Development Status :: 3 - Alpha',
   'License :: OSI Approved :: Apache Software License',
