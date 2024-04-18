@@ -7,7 +7,6 @@ from typing import Any, Literal, Tuple, Union
 
 import numpy as np
 from gradio_client import utils as client_utils
-from gradio_client.documentation import document, set_documentation_group
 from PIL import Image as _Image  # using _ to minimize namespace pollution
 
 
@@ -16,7 +15,6 @@ from gradio.components.base import Component
 from gradio.events import Events
 from gradio.data_classes import GradioRootModel, FileData
 
-set_documentation_group("component")
 _Image.init()  # fixes https://github.com/gradio-app/gradio/issues/2843
 
 
@@ -33,7 +31,6 @@ image_tuple = (
 )
 
 
-@document()
 class ImageSlider(Component):
     """
     Creates an image slider component that can be used to compare two images
