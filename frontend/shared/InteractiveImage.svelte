@@ -31,6 +31,7 @@
 	export let root: string;
 	export let position: number;
 	export let upload_count: number = 2;
+	export let slider_color: string;
 
 	export let gradio: Gradio<{
 		change: never;
@@ -81,6 +82,7 @@
 	/>
 
 	<Image
+		{slider_color}
 		{position}
 		bind:value
 		{root}

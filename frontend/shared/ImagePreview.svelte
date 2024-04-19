@@ -16,6 +16,7 @@
 	export let position: number;
 	export let layer_images = true;
 	export let show_single = false;
+	export let slider_color: string;
 
 	$: value = normalise_file(value, root, null) as [FileData, FileData];
 
@@ -38,7 +39,7 @@
 		{/if}
 	</div>
 	<div class="slider-wrap" bind:clientWidth={el_width}>
-		<Slider bind:position>
+		<Slider bind:position {slider_color}>
 			<img src={value?.[0]?.url} alt="" loading="lazy" />
 			<img
 				class:fixed={layer_images}

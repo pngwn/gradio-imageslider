@@ -21,6 +21,10 @@
 	export let interactive: boolean;
 	export let position: number;
 	export let upload_count: number = 2;
+	export let slider_color = "var(--border-color-primary)"
+
+	$: console.log($$props)
+
 
 	export let gradio: Gradio<{
 		change: never;
@@ -39,6 +43,7 @@
 
 {#if interactive}
 	<InteractiveImage
+		{slider_color}
 		{elem_id}
 		{elem_classes}
 		{visible}
@@ -55,6 +60,7 @@
 	/>
 {:else}
 	<StaticImage
+		{slider_color}
 		i18n={gradio.i18n}
 		{elem_id}
 		{elem_classes}

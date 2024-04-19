@@ -12,8 +12,8 @@ This component can be used in several ways:
 
 
 ## Installation
-    
-```bash 
+
+```bash
 pip install gradio_imageslider
 ```
 
@@ -33,7 +33,7 @@ def fn(im):
 
 with gr.Blocks() as demo:
     with gr.Group():
-        img1 = ImageSlider(label="Blur image", type="pil")
+        img1 = ImageSlider(label="Blur image", type="pil", slider_color="pink")
         img1.upload(fn, inputs=img1, outputs=img1)
 
 if __name__ == "__main__":
@@ -291,6 +291,19 @@ bool | None
 <td align="left"><code>None</code></td>
 <td align="left">If True, will show a share icon in the corner of the component that allows user to share outputs to Hugging Face Spaces Discussions. If False, icon does not appear. If set to None (default behavior), then the icon appears if this Gradio app is launched on Spaces, but not otherwise.</td>
 </tr>
+
+<tr>
+<td align="left"><code>slider_color</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+str | None
+```
+
+</td>
+<td align="left"><code>None</code></td>
+<td align="left">The color of the slider separator.</td>
+</tr>
 </tbody></table>
 
 
@@ -307,8 +320,8 @@ bool | None
 
 The impact on the users predict function varies depending on whether the component is used as an input or output for an event (or both).
 
-- When used as an Input, the component only impacts the input signature of the user function. 
-- When used as an output, the component only impacts the return signature of the user function. 
+- When used as an Input, the component only impacts the input signature of the user function.
+- When used as an output, the component only impacts the return signature of the user function.
 
 The code snippet below is accurate in cases where the component is used as both an input and an output.
 
