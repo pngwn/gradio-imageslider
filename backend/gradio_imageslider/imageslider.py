@@ -69,6 +69,7 @@ class ImageSlider(Component):
         elem_id: str | None = None,
         elem_classes: list[str] | str | None = None,
         show_share_button: bool | None = None,
+        slider_color: str | None = None,
         **kwargs,
     ):
         """
@@ -91,6 +92,7 @@ class ImageSlider(Component):
             elem_id: An optional string that is assigned as the id of this component in the HTML DOM. Can be used for targeting CSS styles.
             elem_classes: An optional list of strings that are assigned as the classes of this component in the HTML DOM. Can be used for targeting CSS styles.
             show_share_button: If True, will show a share icon in the corner of the component that allows user to share outputs to Hugging Face Spaces Discussions. If False, icon does not appear. If set to None (default behavior), then the icon appears if this Gradio app is launched on Spaces, but not otherwise.
+            slider_color: The color of the slider separator.
         """
 
         valid_types = ["numpy", "pil", "filepath"]
@@ -109,6 +111,8 @@ class ImageSlider(Component):
         )
         self.position = position
         self.upload_count = upload_count
+        self.slider_color = slider_color
+
         super().__init__(
             label=label,
             every=every,

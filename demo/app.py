@@ -11,7 +11,7 @@ def fn(im):
 
 with gr.Blocks() as demo:
     with gr.Group():
-        img1 = ImageSlider(label="Blur image", type="pil")
+        img1 = ImageSlider(label="Blur image", type="pil", slider_color="pink")
         img1.upload(fn, inputs=img1, outputs=img1)
 
 if __name__ == "__main__":

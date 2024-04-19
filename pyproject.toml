@@ -57,6 +57,7 @@ artifacts = [
   "*.pyi",
   "backend/gradio_imageslider/templates",
   "backend/gradio_imageslider/templates",
+  "backend/gradio_imageslider/templates",
 ]
 
 [tool.hatch.build.targets.wheel]

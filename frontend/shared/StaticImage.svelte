@@ -25,6 +25,7 @@
 	export let width: number | undefined;
 	export let layer_images = true;
 	export let i18n: I18nFormatter;
+	export let slider_color: string;
 
 	export let container = true;
 	export let scale: number | null = null;
@@ -95,6 +96,7 @@
 		i18n={gradio.i18n}
 		{layer_images}
 		show_single={is_half}
+		{slider_color}
 	/>
 </Block>
 

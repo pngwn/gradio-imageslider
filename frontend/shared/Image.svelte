@@ -20,6 +20,7 @@
 	export let position: number;
 	export let upload_count: number = 2;
 	export let show_download_button = true;
+	export let slider_color: string;
 
 	let value_: [FileData | null, FileData | null] = value || [null, null];
 
@@ -88,7 +89,7 @@
                 {/if}
         </div>
     {/if}
-	<Slider bind:position disabled={upload_count == 2 || !value?.[0]}>
+	<Slider bind:position disabled={upload_count == 2 || !value?.[0]} {slider_color}>
 		<div
 			class="upload-wrap"
 			style:display={upload_count === 2 ? "flex" : "block"}
@@ -179,7 +180,7 @@
 		top: 0;
 		left: 0;
 		background-color: rgba(var(--anim-block-background-fill), 0.8);
-		z-index: 4;
+		z-index: 0;
 	}
 
 	@media (prefers-color-scheme: dark) {
