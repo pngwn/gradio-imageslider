@@ -73,22 +73,13 @@
 	.hidden {
 		opacity: 0;
 	}
-    .icon-button {
-		position: absolute;
-		top: 0px;
-		right: 0px;
-		z-index: var(--layer-1);
-    }
+ 
 
-    .icon-buttons {
-        display: flex;
-        position: absolute;
-        right: 6px;
-        z-index: var(--layer-1);
-        top: 6px;
-    }
-
-    .icon-buttons .download-button-container {
-        margin: var(--size-1) 0;
-    }
+	.icon-buttons {
+			display: flex;
+			position: absolute;
+			right: 8px;
+			z-index: var(--layer-top);
+			top: 8px;
+	}
 </style>

@@ -198,22 +198,15 @@
 	.empty-wrap {
 		pointer-events: none;
 	}
-    .icon-button {
+
+
+	.icon-buttons {
+		display: flex;
 		position: absolute;
-		top: 0px;
-		right: 0px;
-		z-index: var(--layer-1);
-    }
+		right: 8px;
+		z-index: var(--layer-top);
+		top: 8px;
+	}
 
-    .icon-buttons {
-        display: flex;
-        position: absolute;
-        right: 34px;
-        z-index: var(--layer-2);
-        top: 8px;
-    }
 
-    .icon-buttons .download-button-container {
-        margin: var(--size-1) 0;
-    }
 </style>
