@@ -58,13 +58,79 @@
 	}>();
 
 	let dragging = false;
+	let clip_path = position * 100 + "%";
 
 	$: dispatch("drag", dragging);
 	$: style =
-		upload_count === 1 ? `clip-path: inset(0 0 0 ${position * 100}%)` : "";
+		upload_count === 1 ? `clip-path: inset(0 0 0 ${clip_path})` : "";
 	
 
 	let el_width: number;
+
+	let image: HTMLImageElement;
+  let scale = 1; // Initial scale level
+  const min = 1; // Minimum zoom level
+  const max = 10;
+	let origin = 'center center';
+	let timer;
+	let origin_set;
+	let x;
+	let y;
+	function handle_wheel(event: WheelEvent) {
+		console.log('boo')
+		event.preventDefault(); // Prevent the page from scrolling
+
+		if (!origin_set) {
+			const rect = image.getBoundingClientRect();
+			x = event.clientX - rect.left;
+			y = event.clientY - rect.top;
+
+		// Set the transform origin to where the cursor is
+			origin = `${x}px ${y}px`;
+			origin_set = true;
+
+			clearTimeout(timer);
+			timer = setTimeout(() => {
+				origin_set = false;
+				origin = 'center center'; // Reset to center
+			}, 2000);
+		}
+		// Calculate the cursor position relative to the image
+		
+		// Determine the direction of the scroll (up or down)
+		const delta = (event.deltaY || event.detail || event.wheelDelta) / 100;
+
+		console.log(delta)
+
+		// Adjust the scale based on the scroll direction
+		if (delta > 0) {
+			scale = Math.max(min, scale * 0.99); // Zoom out with lower limit
+		} else {
+			scale = Math.min(max, scale * 1.01); // Zoom in with upper limit
+		}
+		updateClipPath()
+		// Set the transform style to scale the image
+		// image.style.transform = `scale(${scale})`;
+	}
+
+	function updateClipPath() {
+		if (!container) {
+			clip_path = position * 100 + "%";
+			return
+		};
+    // Calculate effective clip position considering the transform and slider position
+    const container_width = container.clientWidth;
+		const offset_x = x * (1-scale);
+    const effective_clip_position = (position * container_width + offset_x) * scale ;
+    clip_path =  effective_clip_position + 'px';
+
+		console.log(clip_path)
+  }
+
+	$: position, updateClipPath()
+	
+
+	let container;
 </script>
 
 <BlockLabel {show_label} Icon={Image} label={label || "Image"} />
@@ -93,6 +159,8 @@
 			class="upload-wrap"
 			style:display={upload_count === 2 ? "flex" : "block"}
 			class:side-by-side={upload_count === 2}
+			on:wheel={handle_wheel}
+			bind:this={container}
 		>
 			{#if !value_?.[0]}
 				<div class="wrap" class:half-wrap={upload_count === 1}>
@@ -112,6 +180,9 @@
 					src={value_[0]?.url}
 					alt=""
 					class:half-wrap={upload_count === 2 && !value?.[1]?.url}
+					style:transform="scale({scale})"
+					style:transform-origin={origin}
+					bind:this={image}
 				/>
 			{/if}
 
@@ -141,6 +212,9 @@
 					alt=""
 					class:fixed={upload_count === 1}
 					{style}
+					style:transform="scale({scale})"
+					style:transform-origin={origin}
+					style:clip-path={upload_count === 1 ? `inset(0 0 0 ${clip_path})` : ""}
 				/>
 			{/if}
 		</div>
@@ -197,22 +271,12 @@
 	.empty-wrap {
 		pointer-events: none;
 	}
-    .icon-button {
+
+	.icon-buttons {
+		display: flex;
 		position: absolute;
-		top: 0px;
-		right: 0px;
-		z-index: var(--layer-1);
-    }
-
-    .icon-buttons {
-        display: flex;
-        position: absolute;
-        right: 34px;
-        z-index: var(--layer-2);
-        top: 8px;
-    }
-
-    .icon-buttons .download-button-container {
-        margin: var(--size-1) 0;
-    }
+		right: 34px;
+		z-index: var(--layer-2);
+		top: 8px;
+	}
 </style>
