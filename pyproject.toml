@@ -8,7 +8,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "gradio_imageslider"
-version = "0.0.18"
+version = "0.0.19"
 
 description = """
 A Gradio component for comparing two images.
