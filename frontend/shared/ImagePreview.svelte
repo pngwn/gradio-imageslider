@@ -22,6 +22,8 @@
 	$: style = layer_images ? `clip-path: inset(0 0 0 ${position * 100}%)` : "";
 
 	export let el_width: number;
+
+	
 </script>
 
 <BlockLabel {show_label} Icon={Image} label={label || i18n("image.image")} />
@@ -37,9 +39,13 @@
 			</DownloadLink>
 		{/if}
 	</div>
-	<div class="slider-wrap" bind:clientWidth={el_width}>
+	<div class="slider-wrap" bind:clientWidth={el_width} >
 		<Slider bind:position>
-			<img src={value?.[0]?.url} alt="" loading="lazy" />
+			<img 
+				src={value?.[0]?.url} 
+				alt="" 
+				loading="lazy" 
+			 />
 			<img
 				class:fixed={layer_images}
 				class:hidden={!value?.[1]?.url}
@@ -47,6 +53,8 @@
 				alt=""
 				loading="lazy"
 				{style}
+				style:transform="scale({scale})"
+				style:transform-origin={origin}
 			/>
 		</Slider>
 	</div>
@@ -72,22 +80,12 @@
 	.hidden {
 		opacity: 0;
 	}
-    .icon-button {
+
+	.icon-buttons {
+		display: flex;
 		position: absolute;
-		top: 0px;
-		right: 0px;
+		right: 6px;
 		z-index: var(--layer-1);
-    }
-
-    .icon-buttons {
-        display: flex;
-        position: absolute;
-        right: 6px;
-        z-index: var(--layer-1);
-        top: 6px;
-    }
-
-    .icon-buttons .download-button-container {
-        margin: var(--size-1) 0;
-    }
+		top: 6px;
+	}
 </style>
