@@ -70,6 +70,7 @@ class ImageSlider(Component):
         elem_classes: list[str] | str | None = None,
         show_share_button: bool | None = None,
         slider_color: str | None = None,
+        image_format: str = "webp",
         **kwargs,
     ):
         """
@@ -112,6 +113,7 @@ class ImageSlider(Component):
         self.position = position
         self.upload_count = upload_count
         self.slider_color = slider_color
+        self.image_format = image_format
 
         super().__init__(
             label=label,
@@ -175,10 +177,10 @@ class ImageSlider(Component):
     def _postprocess_image(self, y: image_variants):
         if isinstance(y, np.ndarray):
             path = processing_utils.save_img_array_to_cache(
-                y, cache_dir=self.GRADIO_CACHE
+                y, cache_dir=self.GRADIO_CACHE, format=self.image_format
             )
         elif isinstance(y, _Image.Image):
-            path = processing_utils.save_pil_to_cache(y, cache_dir=self.GRADIO_CACHE)
+            path = processing_utils.save_pil_to_cache(y, cache_dir=self.GRADIO_CACHE, format=self.image_format)
         elif isinstance(y, (str, Path)):
             path = y if isinstance(y, str) else str(utils.abspath(y))
         else:
